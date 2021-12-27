@@ -3,7 +3,7 @@ import { AuthenticateClientController } from './modules/acount/authenticateUser/
 import { AuthenticateDeliverymanController } from './modules/acount/authenticateDeliveryman/AuthenticateDeliverymanController';
 import { CreateClientController } from './modules/clients/useCases/createClient/CreateClientController';
 import { CreateDeliverymanController } from './modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController';
-import { CreateDeliveryController } from './modules/deliveries/useCases/CreateDeliveryController';
+import { CreateDeliveryController } from './modules/deliveries/useCases/CreateDelivery/CreateDeliveryController';
 import { ensureAuthenticateClient } from './middlewares/ensureAuthenticateClient';
 
 const routes = Router();
