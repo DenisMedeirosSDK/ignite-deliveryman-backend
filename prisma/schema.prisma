@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,34 +8,33 @@ datasource db {
 }
 
 model Deliveryman {
-  id       String @id @default(uuid())
-  username String @unique
-  password String
+  id         String       @id @default(uuid())
+  username   String       @unique
+  password   String
+  deliveries Deliveries[]
 
-  Deliveries Deliveries[]
   @@map("deliveryman")
 }
 
 model Clients {
-  id       String @id @default(uuid())
-  username String @unique
-  password String
+  id         String       @id @default(uuid())
+  username   String       @unique
+  password   String
+  deliveries Deliveries[]
 
-  Deliveries Deliveries[]
   @@map("clients")
 }
 
 model Deliveries {
-  id             String      @id @default(uuid())
+  id             String       @id @default(uuid())
   id_client      String
-  client         Clients     @relation(fields: [id_client], references: [id])
-  id_deliveryman String
-  deliveryman    Deliveryman @relation(fields: [id_deliveryman], references: [id])
-  item_name      String
-  created_at     DateTime    @default(now())
-  end_at         DateTime    @default(now())
+  client         Clients      @relation(fields: [id_client], references: [id])
+  id_deliveryman String?
+  deliveryman    Deliveryman? @relation(fields: [id_deliveryman], references: [id])
 
-  clientsId     String
-  deliverymanId String
+  item_name  String
+  created_at DateTime  @default(now())
+  end_at     DateTime?
+
   @@map("deliveries")
 }
